@@ -6,7 +6,7 @@ near optimal solution of Travelling salesman problem using simulated annealing w
 [2] use this method/or other more robust one and google maps to figure out best logistics for delivery/courier companies
 
 # Feature
-you can use your own data file or let the code generate some random samples for you
+you can use your own data file or let the code generate some random samples for you, output/algorithm's solution at each iteration can be easily visualized with the animation
 
 # Prerequisites
 This requires ffmpeg or mencoder to be installed to run animation, matplotlib and numpy modules.
