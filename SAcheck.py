@@ -22,9 +22,6 @@ def total_length(arr,n):
 #animation frame update function
 #def update():
 	
-
-	
-	
 # two_opt optimization for simulated annealing, using a random probabilty function to do selection
 
 def two_opt_optimization(sol_arr,t,n,min_l):
