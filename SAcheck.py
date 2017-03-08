@@ -18,10 +18,7 @@ def total_length(arr,n):
 		l+= length(arr[i],arr[i+1])
 	return l
 		
-
-#animation frame update function
-#def update():
-	
+			
 # two_opt optimization for simulated annealing, using a random probabilty function to do selection
 
 def two_opt_optimization(sol_arr,t,n,min_l):
@@ -84,12 +81,15 @@ def two_opt_optimization(sol_arr,t,n,min_l):
 			# animate this frame
 			frame_arr=new_arr
 			frame_arr=np.array(new_arr)
-				
-			plt.scatter(frame_arr[:,0],frame_arr[:,1],color='g',s=100)
-			plt.scatter([sol_arr[ai_][0],sol_arr[bi_][0],sol_arr[ci_][0],sol_arr[di_][0]],[sol_arr[ai_][1],sol_arr[bi_][1],sol_arr[ci_][1],sol_arr[di_][1]],color='r',s=150)
+			
+			plt.ylim(-100,1100)
+			plt.xlim(-100,1100)
+			plt.axis('off')	
+			plt.scatter(frame_arr[:,0],frame_arr[:,1],color='g',s=50)
+			plt.scatter([sol_arr[ai_][0],sol_arr[bi_][0],sol_arr[ci_][0],sol_arr[di_][0]],[sol_arr[ai_][1],sol_arr[bi_][1],sol_arr[ci_][1],sol_arr[di_][1]],color='r',s=75)
 			plt.plot(frame_arr[:,0],frame_arr[:,1],color='b')
 			plt.plot([frame_arr[0][0],frame_arr[-1][0]],[frame_arr[0][1],frame_arr[-1][1]], color='b')
-			plt.title('Travelling Salesman Problem\n' 'temp=' + ("%f" % t) + '    ' 'curr Length='+ ("%f" % (min_l-diff)))
+			plt.title('Travelling Salesman Problem\n points ' + ("%d" % n) +' temp=' + ("%f" % t) + '    ' 'curr Length='+ ("%f" % (min_l-diff)))
 			
 			global image_no
 			plt.savefig( ("%05d" % image_no) + '.png')
@@ -113,12 +113,16 @@ def sa_algorithm (input_data):
 	
 	global image_no
 	image_no = 1
+	plt.clf();
 	plt.title('Travelling Salesman Problem\n')
-	plt.axes([-10,1010,-10,1010])
+	#plt.axes([-10,1010,-10,1010])
+	plt.ylim(-100,1100)
+	plt.xlim(-100,1100)
+	plt.axis('off')
 	
 	#plotting base solution
 	for i in range(n):
-		plt.scatter(sol_arr[i][0],sol_arr[i][1],color='g',s=100)
+		plt.scatter(sol_arr[i][0],sol_arr[i][1],color='g',s=50)
 		plt.savefig( ("%05d" % image_no) + '.png')
 		image_no += 1
 		
@@ -155,7 +159,9 @@ def sa_algorithm (input_data):
 			current_l=total_length(sol_arr,n)
 			
 			#because input size is approx. 200 i'm keeping the cooling schedule slow
-			t = t*0.9
+			#t =t*0.9995
+			#t =t*0.9
+			t -=0.1
 			#print t
 			
 			if current_l < min_l:
