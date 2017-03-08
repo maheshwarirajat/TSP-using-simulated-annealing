@@ -17,7 +17,7 @@ n=0
 
 if s=="1":
 	# creating random inputs
-	print "enter the amount of inputs (preferrably close to 200)"
+	print "enter the amount of inputs (points/cities)"
 	n=input()
 	input_data=np.random.randint(1000,size=(n,2))
 	
