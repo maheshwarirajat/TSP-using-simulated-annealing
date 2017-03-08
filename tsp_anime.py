@@ -1,7 +1,7 @@
 #Modules
 import numpy as np
 import matplotlib.pyplot as plt
-import SAcheck as lib
+import SA_anime as lib
 
 #global variables
 global input_data
